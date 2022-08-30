@@ -20,7 +20,7 @@ class _GeneratePasswordState extends State<GeneratePassword> {
 
   final Random _rnd = Random();
 
-  double _size = 18;
+  double _size = 16;
   bool _symbols = true;
   bool _uppercase = true;
   bool _lowercase = true;
@@ -141,7 +141,7 @@ class _GeneratePasswordState extends State<GeneratePassword> {
                 max: 120,
                 divisions: 120,
                 value: _size,
-                label: int.tryParse(_size.toStringAsFixed(0)).toString(),
+                label: _size.round().toString(),
                 activeColor: const Color(0xffE8EDDF),
                 inactiveColor: const Color(0xff242423),
                 thumbColor: const Color(0xffE8EDDF),
@@ -202,7 +202,7 @@ class _GeneratePasswordState extends State<GeneratePassword> {
                   generatePassword();
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: const Color(0xff44355b),
+                    primary: const Color(0xff7209b7),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 20),
                     textStyle: const TextStyle(
@@ -238,7 +238,7 @@ class _GeneratePasswordState extends State<GeneratePassword> {
 
     setState(() {
       _password = String.fromCharCodes(Iterable.generate(
-          int.tryParse(_size.toString())!,
+          _size.round(),
           (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
     });
   }
